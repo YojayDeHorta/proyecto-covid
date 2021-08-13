@@ -69,7 +69,7 @@ getCovidData();
 function getCovidDeaths() {
 
 
-    fetch("https://api.covid19api.com/country/colombia?from=2021-06-18T00:00:00Z&to=2021-07-19T00:00:00Z").then(response => response.json())
+    fetch("https://api.covid19api.com/country/colombia?from=2021-06-18T00:00:00Z&to=2021-08-13T00:00:00Z").then(response => response.json())
         .then(data => {
 
             displaydeaths(data);
