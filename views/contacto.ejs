@@ -1,0 +1,58 @@
+<%- include("template/header", {title:'contacto'}) %>
+<link rel="stylesheet" href="css/contacto.css">
+<%- include("template/navbar", {validador: loggedin,activador:'',activadoruser:'' , activadorcontact:'active'}) %>
+<section class="contact">
+    <div class="outercontact">
+    <div class="content">
+        <h2>contactanos</h2>
+        <p>si sientes algun tipo de sintoma referente al covid 19 despues de la vacunacion 
+            porfavor llena este formulario o llamanos a los numeros en pantalla
+        </p>
+    </div>
+    <div class="contacto">
+        <div class="contactInfo">
+            <div class="box">
+                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="text">
+                    <h3>no te automediques!</h3>
+                    <p>tambien puedes acercarte a tu hospital mas cercano</p>
+                </div>
+            </div> 
+            <div class="box">
+                <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="text">
+                    <h3>contactanos al :</h3>
+                    <p>018007000</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="far fa-envelope"></i></div>
+                <div class="text">
+                    <h3>email :</h3>
+                    <p>cuidatusalud@mail.com</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="contactForm">
+            <form id="contactoForm">
+                
+                <h2>envianos como te sientes</h2>
+                <div class="inputBox">
+                    <textarea type="text" id="textpeque" name="contacto_personas" max="250" required></textarea>
+                    <span>has tenido contacto con alguien despues de vacunarte?</span>
+                </div>
+                <div class="inputBox">
+                    <textarea type="text"  id="textgrand" name="sintomas" max="500" required></textarea>
+                    <span>cuentanos, que sintomas tuviste despues de que te vacunaron</span>
+                </div>
+                <div class="inputBox">
+                    <input type="submit"  value="enviar diagnostico">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+<script src="js/contacto.js"></script>
+<%- include("template/footer") %>

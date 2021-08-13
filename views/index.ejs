@@ -1,0 +1,100 @@
+<%- include("template/header", {title:'bienvenido'}) %>
+<%- include("template/navbar", {validador: loggedin,activador:'active',activadoruser:'',activadorcontact:''}) %>   
+
+<div class="container" >
+		<div class="outer">
+			<div class="row">
+				<div class="col reveal-onload ">
+					<h1>bienvenido <%= nombre %> 
+					</h1>
+					<h4>accede <a href="#tips">aqui</a> para informarte sobre como mantener tu salud contra
+						el
+						covid 19</h4>
+				</div>
+				<div class="col col-info reveal-estadisticas" id="estadisticas">
+					<h2 class="subtitle">Ultimas estadisticas del "Corona Virus"</h2>
+
+					<h4 id="cases" class="left-col"> casos confirmados: </h4>
+					<h4 id="deaths" class="right-col">muertes: </h4>
+					<h4 id="percent" class="left-col">porcentaje de muertes: </h4>
+					<h4 id="population" class="right-col">poblacion actual: </h4>
+					<div class="update">
+						<h3 id="update">ultima actualizacion: </h3>
+						<a href="#grafico">ver grafico</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-banner">
+		<h1 id="tips">Tips contra el covid 19</h1>
+		<div class="informacion-box ">
+			<div class="informacion revealY">
+				<div class="texto-informacion">
+					<h2><i class="fas fa-info-circle"></i> MANTENTE INFORMADO</h2>
+					<p>
+						Mantengase informado con noticias recientes sobre el avance de la enfermedad, no permita que las
+						noticias lo
+						sugestionen, busque solo mantenerse informado. Evite las multitudes y lugares concurridos.
+					</p>
+				</div>
+			</div>
+			<div class="informacion revealY">
+				<div class="texto-informacion">
+					<h2><i class="fas fa-hands-wash"></i> CUIDA TU HIGIENE</h2>
+					<p>
+						proteja su rostro con un tapabocas ubicado entre el tabique y abajo del mentón, bien ajustado a
+						la cara, tenga en cuenta la higiene de manos al ponerlo y quitarlo, evite el contacto de las
+						manos con la cara y el tapabocas. También es importante que proteja su nariz y boca al toser o
+						estornudar, para evitar esparcir gotas que pueden contener el virus.
+					</p>
+				</div>
+			</div>
+			<div class="informacion revealY">
+				<div class="texto-informacion">
+					<h2><i class="fas fa-people-arrows"></i> DISTANCIA SOCIAL</h2>
+					<p>
+						es prudente que usted mantenga una distancia física con todas las personas de mínimo 2 metros,
+						de forma que evite estar en contacto con sus secreciones corporales, es probable que algunas
+						personas no presenten síntomas, así que la distancia será su mejor arma de protección.
+					</p>
+				</div>
+			</div>
+			<div class="informacion revealY">
+				<div class="texto-informacion">
+					<h2><i class="fas fa-hand-sparkles"></i> LIMPIEZA DIARIA</h2>
+					<p>
+						haga frecuentemente el aseo y la desinfección al espacio y a los objetos que usa permanente en
+						el trabajo y evite el contacto con superficies visiblemente contaminadas.
+					</p>
+				</div>
+			</div>
+			<div class="informacion revealY">
+				<div class="texto-informacion">
+					<h2><i class="fas fa-smile-beam"></i> ACTITUD POSITIVA</h2>
+					<p>
+						siempre con buena energía, manteniendo la calma busque espacios para ejercitar su cuerpo,
+						“Recuerde que mente sana en cuerpo sano”
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="container-grafico" id="grafico">
+		<div class="graficos">
+			<h1 class="title reveal-left">grafico de contagios en colombia - Covid 19</h1>
+			<div id="chartDiv" class="chartDiv">
+			</div>
+		</div>
+		<div class="graficos">
+			<h1 class="title reveal-right">grafico de muertes en colombia - Covid 19</h1>
+			<div id="chartDivMuertes" class="chartDiv">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/covid/datosCovid.js"></script>
+<script src="js/covid/animaciones.js"></script>
+<script src="js/covid/grafico.js"></script>
+	<%- include("template/footer") %>

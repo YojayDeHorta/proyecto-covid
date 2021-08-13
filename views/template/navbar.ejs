@@ -1,0 +1,29 @@
+<div class="container-nav">
+  <nav class="navbar">
+
+    <img src="images/logo.png" class="logo"  />
+
+    <input type="checkbox" id="check" />
+    <label for="check" class="bar-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul class="nav-menu">
+      <li><a class="<%= activador %>" href="/">Inicio</a></li>
+      <% if (validador) { %>
+        <li><a class="<%= activadoruser %>" href="/usuario">Perfil</a></li> 
+        
+         
+        
+        <li><a href="/contacto" class=" <%= activadorcontact %>  ">Ayuda</a></li>
+        <% } %>
+      <li><a href="#footer">Acerca de nosotros</a></li>
+      <% if (validador) { %>
+        <li><a href="/cerrarsesion">Cerrar sesion</a></li>
+      <% } else {%>
+        <li><a href="/login">Iniciar sesion</a></li>
+        <% } %>
+      <li><a href="../login/index.php"></a></li>
+
+    </ul>
+  </nav>
+</div>

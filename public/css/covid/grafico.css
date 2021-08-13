@@ -1,0 +1,16 @@
+:root {
+  --blue: #00bec1;
+}
+.title {
+  color: var(--blue);
+  text-align: center;
+}
+.country_options {
+  margin-left: 50%;
+  transform: translate(-50%);
+  height: 35px;
+  padding: 0x 10px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  border: 2px solid var(--blue);
+}

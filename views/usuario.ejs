@@ -1,0 +1,155 @@
+<%- include("template/header", {title:'mi perfil'}) %>
+<link rel="stylesheet" href="css/usuario.css">
+<link rel="stylesheet" href="css/modal.css">
+
+<%- include("template/navbar", {validador: loggedin,activador:'',activadoruser:'active', activadorcontact:''}) %>
+<div class="container-user">
+    <div class="container-infouser">
+        
+        <h1>Hola <%= nombre %> </h1>
+        <h2> Mantente al pendiente de las etapas para saber cuando te toca tu vacunacion correspondiente!</h2>
+        <br><br>
+        <% if (locals.vacuna) { %>
+        <h2> Recuerda dar tu consentimiento antes de ir a vacunarte</h2>
+        <div class="boton" id="consentimiento">
+            <p>ver consentimiento</p>
+        </div>
+        <% } %>
+    </div>
+    <div class="container-fechas">
+        <ul>
+            <h1>Informacion de vacunacion</h1>
+            <% if (locals.vacuna) { %>
+            <li>
+                <div class="date">
+                    <h3><%= primeraDosis[2] %><br><span><%= primeraDosis[0] %></span></h3>
+                </div>
+                <a href="#">
+                    <p>porfavor asista a el <%= lugar %> en <%= ciudad %> en la fecha estipulada para su primera dosis</p>
+                </a>
+            </li>
+                <% if (segundaDosis!='no') { %>
+                <li>
+                    <div class="date">
+                        <h3><%= segundaDosis[2] %><br><span><%= segundaDosis[0] %></span></h3>
+                    </div>
+                    <a href="#">
+                        <p>para su segunda dosis usted debe ir al <%= lugar %> en <%= ciudad %> en la fecha estipulada</p>
+                    </a>
+                </li>
+                 
+
+                <% } %>
+            <h3>se le aplicara la vacuna: <%= vacuna %> </h3>   
+            <% } else { %>
+                <p> lastimosamente aun no tienes fecha para vacunarte, si estas en la etapa correspondiente o paso tu etapa de vacunacion y sigue sin llegarte la fecha puedes
+                    mandar una solicitud <a  id="solicitud" onclick="solicitud()" class="etapa1"> aqui </a>
+                </p>
+                <p>o puedes <a id="solicitud" onclick="versolicitudes()" class="etapa5"> ver tus solicitudes </a> </p>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<div class="container-fases">
+    <h1>etapa actual <i class="etapa<%= etapa %>"><%= etapa %> </i> </h1>
+    <h2>usted esta en esta etapa? <% if (enEtapa) { %><i class="etapa2">si</i><% } else { %><i class="etapa5">no</i><% } %></h2>
+    <p class="descripcion"><%= descripcion %></p>
+    <img src="https://www.minsalud.gov.co/salud/publica/Vacunacion/PublishingImages/Paginas/Vacunacion-covid-19/Fases%20vacunacion%20covid-19-%201-2.png" alt="">
+    <div class="informacion-fases">
+        <div class="etapa">
+            <i class="fas fa-map-marker fa-3x etapa1"></i>
+            <h3 class="etapa1">ETAPA 1</h3>
+            <p> <i class="etapa1">- 100%</i> Trabajadores de la salud y de apoyo a la primera linea</p>
+            <p> <i class="etapa1">- 100%</i> Mayores de 80 años</p>
+        </div>
+        <div class="etapa">
+            <i class="fas fa-map-marker fa-3x etapa2"></i>
+            <h3 class="etapa2">ETAPA 2</h3>
+            <p> <i class="etapa2">- 100%</i> poblacion de 60 a 79 años</p>
+            <p> <i class="etapa2">- 100%</i> Trabajadores de la salud, segunda y tercera linea</p>
+        </div>
+        <div class="etapa">
+            <i class="fas fa-map-marker fa-3x etapa3"></i>
+            <h3 class="etapa3">ETAPA 3</h3>
+            <p> <i class="etapa3">- 100%</i> Poblacion de 16 a 59 años con comorbilidades</p>
+            <p> <i class="etapa3">- 100%</i> Profesores basica y secundaria</p>
+        </div>
+        <div class="etapa">
+            <i class="fas fa-map-marker fa-3x etapa4"></i>
+            <h3 class="etapa4">ETAPA 4</h3>
+            <p> <i class="etapa4">- 100%</i> Ciudades institucionales</p>
+            <p> <i class="etapa4">- 100%</i> Poblacion en ocupaciones y situaciones de riesgo</p>
+        </div>
+        <div class="etapa">
+            <i class="fas fa-map-marker fa-3x etapa5"></i>
+            <h3 class="etapa5">ETAPA 5</h3>
+            <p> <i class="etapa5">- 100%</i></i> Poblacion entre 16 y 59 años libres de comorbilidades</p>
+            
+        </div>
+    </div>
+   
+</div>
+
+<!-- ventana modal -->
+<div id="modal_container" class="modal-container">
+    <div class="modal">
+      <h1>Consentimiento del paciente</h1>
+      <p>
+        para poder vacunarte contra el covid 19 debes aceptar el consentimiento, en este estan todo lo que necesitas saber acerca de los beneficios y riesgos que tiene la vacuna
+      </p>
+      <% if (validConsentimiento==0) { %>
+        <form id="archivoForm" >
+            <!-- action="/subir" method="POST" enctype="multipart/form-data"f -->
+            <input type="file" id="archivo" name="archivo" accept="image/jpeg,image/jpg,application/pdf" required>
+            <label for="archivo"><i class="fas fa-upload"></i> elige un archivo...</label>
+            <br><br>
+            <span>
+                <strong>archivo elegido:</strong>
+                <span id="nombre-archivo">ninguno</span>
+            </span>
+            <br><br>
+            <button type="submit" class="boton-modal">enviar</button>
+            <button type="button" id="close" class="boton-modal bgred">Cerrar</button>
+
+            </form>
+        <h2>O si quieres descargar la plantilla del consentimiento da <a href="archivos/plantilla.pdf">click aqui</a></h2> 
+        <% } else { %>
+            <h2 class="etapa2">Tu consentimiento ha sido aceptado, ya puedes ir a vacunarte</h2> 
+            <br>
+            <button type="button" id="close" class="boton-modal bgred">Cerrar</button>
+        <% } %>
+
+    </div>
+</div>
+<div id="modal_solicitud" class="modal-container">
+    <div class="modal">
+    <form id="solicitudForm">
+      <h1>solicitud</h1>
+      <p>(opcional) si quieres puedes añadir razones por las cuales deberias estar listado</p>
+      <textarea class="areatexto" name="descripcion_solicitud" max="500" required></textarea><br>
+      <button type="submit" class="boton-modal">enviar</button>
+      <button type="button" onclick="cerrar_solicitud()" class="boton-modal bgred">Cerrar</button><br>
+      <p>si ha pasado tu etapa y no recibiste solicitud te añadiremos!</p>
+      <p>si no analizaremos tu caso  y si nos hemos equivocado te cambiaremos!</p>
+    </form>  
+    </div>
+</div>
+
+
+
+<!-- boton post vacunacion -->
+<div class="fixed-btn" id="sintomas" >
+    <p>sientes sintomas post vacunacion?</p>
+</div>
+
+
+
+<script src="js/archivos.js"></script>
+<script src="js/solicitud.js"></script>
+<script src="js/usuario.js"></script>
+<%- include("template/footer") %>
